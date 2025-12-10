@@ -1,4 +1,5 @@
-const API_KEY = "YOUR_KEY_HERE"; // ← بدليها بمفتاحك الحقيقي
+const API_KEY = "";  // نخليه فارغ
+
 
 async function generateCopy() {
     const input = document.getElementById("userInput").value;
