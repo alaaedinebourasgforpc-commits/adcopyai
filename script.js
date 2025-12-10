@@ -1,25 +1,13 @@
-const API_KEY = "";  // نخليه فارغ
-
-
 async function generateCopy() {
     const input = document.getElementById("userInput").value;
     const outputBox = document.getElementById("outputBox");
 
     outputBox.innerHTML = "⏳ Generating...";
 
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("/api/generate", {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${API_KEY}`
-        },
-        body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [
-                { role: "system", content: "You generate high-quality advertising copy." },
-                { role: "user", content: input }
-            ]
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: input })
     });
 
     const data = await response.json();
